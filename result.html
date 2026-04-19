@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+<meta charset="UTF-8">
+<title>SRI Result</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+Assessment Result<br>
+测评结果
+</h1>
+
+<div id="resultBox"></div>
+
+<button onclick="restartTest()">
+Restart Test 重新测试
+</button>
+
+</div>
+
+<script>
+
+let total = localStorage.getItem("sri_total");
+
+let level = "";
+
+if(total<=45){
+level="Low Repression 低压抑";
+}
+else if(total<=65){
+level="Mild Repression 轻度压抑";
+}
+else if(total<=85){
+level="Moderate Repression 中度压抑";
+}
+else if(total<=105){
+level="High Repression 较高压抑";
+}
+else{
+level="Very High Repression 高度压抑";
+}
+
+document.getElementById("resultBox").innerHTML = `
+
+<h2>Total Score 总分: ${total}</h2>
+
+<h3>Level 等级: ${level}</h3>
+
+<p>
+
+This score reflects tendencies related to sexual repression, anxiety,
+and avoidance in communication and intimacy.
+
+该分数反映了在性表达、亲密沟通和身体认知方面的压抑倾向。
+
+</p>
+
+<p class="note">
+
+This tool is not a clinical diagnostic instrument.<br>
+本工具不是医学诊断工具。
+
+</p>
+
+`;
+
+function restartTest(){
+
+localStorage.clear();
+window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
